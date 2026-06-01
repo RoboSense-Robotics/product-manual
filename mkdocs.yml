@@ -3,21 +3,25 @@ site_url: https://RoboSense-Robotics.github.io/product-manual/  # GitHub Pages �
 
 nav:
   - 首页: index.md
-  - Airy: Airy.md
-  - Airy Lite: AiryLite.md
-  - Bpearl: BPearl_CN.md
-  - RS-Bpearl (V3): Bpearl_v3_CN.md
-  - E1: E1_CN.md
-  - E1R: E1R_CN.md
-  - EM4: EM4_CN.md
-  - EMX: EMX_CN.md
-  - Fairy (48T1): Fairy_CN_48T1.md
-  - Fairy (48TX): Fairy_CN_48TX.md
-  - Helios 16: Helios16_CN.md
-  - Helios 32: Helios32_CN.md
-  - M1: M1_CN.md
-  - M1P: M1P_CN.md
-  - Ruby Plus: RubyPlus_CN.md
+  - EM平台激光雷达:
+    - EM4: EM4_CN.md
+    - EMX: EMX_CN.md
+  - M平台激光雷达:
+    - M1: M1_CN.md
+    - M1 Plus: M1P_CN.md
+  - E平台激光雷达:
+    - E1R: E1R_CN.md
+    - E1: E1_CN.md
+  - R平台激光雷达:
+    - Airy: Airy.md
+    - Airy Lite: AiryLite.md
+    - Ruby Plus: RubyPlus_CN.md
+    - Helios 16: Helios16_CN.md
+    - Helios 32: Helios32_CN.md
+    - Bpearl: BPearl_CN.md
+    - RS-Bpearl (V3): Bpearl_v3_CN.md
+    - Fairy (48T1): Fairy_CN_48T1.md
+    - Fairy (48TX): Fairy_CN_48TX.md
 
 theme:
   name: material

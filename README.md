@@ -16,7 +16,8 @@ mkdocs serve
 ## 添加文档
 
 1. 在 `docs/` 下新增 `.md` 文件
-2. 在 `mkdocs.yml` 的 `nav` 中登记页面
+2. 在 `mkdocs.yml` 的 `nav` 中按平台分类登记（EM / M / E / R）
+3. 在 `docs/index.md` 对应平台章节补充链接
 
 ## 从 PDF 导入后处理 HTML 表格
 
