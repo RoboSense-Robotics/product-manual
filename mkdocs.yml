@@ -1,0 +1,56 @@
+site_name: 公司产品手册
+site_url: https://RoboSense-Robotics.github.io/product-manual/  # GitHub Pages 地址
+
+nav:
+  - 首页: index.md
+  - Airy: Airy.md
+  - Airy Lite: AiryLite.md
+  - Bpearl: BPearl_CN.md
+  - RS-Bpearl (V3): Bpearl_v3_CN.md
+  - E1: E1_CN.md
+  - E1R: E1R_CN.md
+  - EM4: EM4_CN.md
+  - EMX: EMX_CN.md
+  - Fairy (48T1): Fairy_CN_48T1.md
+  - Fairy (48TX): Fairy_CN_48TX.md
+  - Helios 16: Helios16_CN.md
+  - Helios 32: Helios32_CN.md
+  - M1: M1_CN.md
+  - M1P: M1P_CN.md
+  - Ruby Plus: RubyPlus_CN.md
+
+theme:
+  name: material
+  language: zh          # 切换为中文界面
+  palette:
+    - scheme: default   # 日间模式
+      primary: indigo
+      accent: indigo
+    - scheme: slate     # 夜间模式
+      primary: indigo
+      accent: indigo
+  features:
+    - navigation.tabs   # 顶部导航栏模式（适合多手册分类）
+    - navigation.top    # 回到顶部按钮
+    - toc.follow        # 右侧目录随滚动高亮当前章节
+    - search.suggest    # 搜索建议提示
+    - search.highlight  # 搜索词高亮
+
+# 开启内置全文搜索引擎
+plugins:
+  - search
+
+# 核心配置：扩展 Markdown 语法以支持公式和图表
+markdown_extensions:
+  - pymdownx.arithmatex: # 公式支持 (MathJax)
+      generic: true
+  - pymdownx.superfences: # 支持 Mermaid 图表代码块
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - tables # 原生表格增强支持
+
+# MathJax 3（现代浏览器无需 polyfill.io；该域名已不可靠且会触发异常认证弹窗）
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
