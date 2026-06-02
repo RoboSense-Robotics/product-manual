@@ -14,7 +14,6 @@ nav:
     - E1: E1_CN.md
   - R平台激光雷达:
     - Airy: Airy.md
-    - Airy Lite: AiryLite.md
     - Ruby Plus: RubyPlus_CN.md
     - Helios 16: Helios16_CN.md
     - Helios 32: Helios32_CN.md
@@ -46,6 +45,8 @@ plugins:
 
 # 核心配置：扩展 Markdown 语法以支持公式和图表
 markdown_extensions:
+  - md_in_html # <figure markdown> 内嵌图片与 <figcaption> 图题
+  - attr_list
   - pymdownx.arithmatex: # 公式支持 (MathJax)
       generic: true
   - pymdownx.superfences: # 支持 Mermaid 图表代码块
@@ -55,6 +56,9 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - tables # 原生表格增强支持
 
-# MathJax 3（现代浏览器无需 polyfill.io；该域名已不可靠且会触发异常认证弹窗）
+extra_css:
+  - stylesheets/extra.css
+
+# MathJax 3
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
