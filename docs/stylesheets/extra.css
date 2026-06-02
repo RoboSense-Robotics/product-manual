@@ -1,0 +1,164 @@
+/* 图 + 图下居中标题（配合 <figure markdown> + <figcaption>） */
+.md-typeset figure {
+  display: block;
+  margin: 1.25em auto;
+  max-width: 100%;
+  text-align: center;
+}
+
+.md-typeset figure img {
+  display: block;
+  margin: 0 auto;
+  max-width: min(100%, 720px);
+  height: auto;
+}
+
+.md-typeset figure figcaption {
+  display: block;
+  margin-top: 0.5em;
+  text-align: center;
+  font-size: 0.85em;
+  line-height: 1.5;
+  color: var(--md-default-fg-color--light);
+}
+
+/* 备用：普通 Markdown 图片 + 下方标题段落 */
+.md-typeset p.manual-figure-caption {
+  margin-top: -0.25em;
+  margin-bottom: 1.25em;
+  text-align: center;
+  font-size: 0.85em;
+  color: var(--md-default-fg-color--light);
+}
+
+.md-typeset p.manual-figure-caption + * {
+  margin-top: 0;
+}
+
+/* 3.1 线束说明表格（HTML rowspan） */
+.md-typeset table.wire-harness-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.md-typeset table.wire-harness-table th,
+.md-typeset table.wire-harness-table td {
+  vertical-align: middle;
+  text-align: center;
+  border: 1px solid #9e9e9e;
+  padding: 0.45rem 0.35rem;
+}
+
+.md-typeset table.wire-harness-table th:first-child,
+.md-typeset table.wire-harness-table td:first-child {
+  width: 120px;
+}
+
+.md-typeset table.wire-harness-table th:nth-child(2),
+.md-typeset table.wire-harness-table td:nth-child(2) {
+  width: 180px;
+}
+
+.md-typeset table.wire-harness-table th:nth-child(3),
+.md-typeset table.wire-harness-table td:nth-child(3) {
+  width: 230px;
+}
+
+.md-typeset table.wire-harness-table th {
+  font-weight: 600;
+}
+
+.md-typeset table.wire-harness-table td img {
+  display: block;
+  margin: 0.25em auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* DIFOP 等协议包定义表（rowspan / colspan） */
+.md-typeset table.packet-def-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.md-typeset table.packet-def-table th,
+.md-typeset table.packet-def-table td {
+  vertical-align: middle;
+  text-align: center;
+  border: 1px solid #9e9e9e;
+  padding: 0.4rem 0.5rem;
+}
+
+.md-typeset table.packet-def-table thead th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table.packet-def-table thead th {
+  background-color: #3a3a3a;
+}
+
+/* 手册重点说明（红色） */
+.md-typeset .manual-note-red {
+  color: #c62828;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .manual-note-red {
+  color: #ef5350;
+}
+
+/* 表 1：产品规格表 */
+.md-typeset table.product-spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #9e9e9e;
+}
+
+.md-typeset table.product-spec-table td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid #9e9e9e;
+  vertical-align: middle;
+}
+
+.md-typeset table.product-spec-table tr:last-child td {
+  border-bottom: none;
+}
+
+.md-typeset table.product-spec-table td:first-child {
+  width: 22%;
+  text-align: center;
+  font-weight: 600;
+  border-right: none;
+}
+
+.md-typeset table.product-spec-table td:last-child {
+  text-align: left;
+  border-left: none;
+}
+
+.md-typeset table.product-spec-table ul {
+  margin: 0;
+  padding-left: 1.25em;
+}
+
+.md-typeset table.product-spec-table li {
+  margin: 0.2em 0;
+}
+
+.md-typeset table.product-spec-table .spec-subline {
+  display: block;
+  padding-left: 1.25em;
+  margin-top: 0.15em;
+}
+
+.md-typeset .spec-footnotes {
+  margin-top: 0.5em;
+  font-size: 0.85em;
+  line-height: 1.55;
+  color: var(--md-default-fg-color--light);
+}
+
+.md-typeset .spec-footnotes p {
+  margin: 0.35em 0;
+}

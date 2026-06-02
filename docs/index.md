@@ -28,7 +28,6 @@
 | 产品 | 说明 |
 | --- | --- |
 | [Airy](Airy.md) | Airy 激光雷达产品手册（V1.3） |
-| [Airy Lite](AiryLite.md) | Airy Lite 激光雷达产品手册（V2.0） |
 | [Ruby Plus](RubyPlus_CN.md) | Ruby Plus 激光雷达产品手册（V1.2） |
 | [Helios 16](Helios16_CN.md) | Helios 16 激光雷达产品手册（V1.1） |
 | [Helios 32](Helios32_CN.md) | Helios 32 激光雷达产品手册（V1.1） |
