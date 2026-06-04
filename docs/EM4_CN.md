@@ -1,6 +1,6 @@
 # EM4 用户手册
 
-![](assets/em4/0.jpg)
+![](assets/em4/0.jpg){: .manual-img--xl }
 
 ## 变更说明
 
@@ -93,7 +93,7 @@ https://www.robosense.cn/resources
 
 2) 高温注意：注意表面过热标识，谨防发生意外。
 
-![](docs/assets/em4/1.5-2.jpg)
+![](assets/em4/1.5-2.jpg)
 
 3) 保留说明：请保留所有安全和操作说明，以备将来参考。
 
