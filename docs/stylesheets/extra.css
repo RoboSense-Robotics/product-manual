@@ -1,3 +1,42 @@
+/* 独立成段的 Markdown 图片居中（如 1.5 节安全标识图） */
+.md-typeset p:has(> img:only-child) {
+  text-align: center;
+  margin: 0.75em auto 1em;
+}
+
+.md-typeset p:has(> img:only-child) img {
+  display: inline-block;
+  margin: 0 auto;
+  max-width: min(100%, 360px);
+  height: auto;
+}
+
+/* 插图缩放（单独一行图片加 class，需 mkdocs.yml 中 attr_list） */
+.md-typeset img.manual-img--sm,
+.md-typeset p:has(> img:only-child) img.manual-img--sm {
+  max-width: min(100%, 200px);
+}
+
+.md-typeset img.manual-img--md,
+.md-typeset p:has(> img:only-child) img.manual-img--md {
+  max-width: min(100%, 360px);
+}
+
+.md-typeset img.manual-img--lg,
+.md-typeset p:has(> img:only-child) img.manual-img--lg {
+  max-width: min(100%, 560px);
+}
+
+.md-typeset img.manual-img--xl,
+.md-typeset p:has(> img:only-child) img.manual-img--xl {
+  max-width: min(100%, 720px);
+}
+
+.md-typeset img.manual-img--full,
+.md-typeset p:has(> img:only-child) img.manual-img--full {
+  max-width: 100%;
+}
+
 /* 图 + 图下居中标题（配合 <figure markdown> + <figcaption>） */
 .md-typeset figure {
   display: block;
@@ -22,22 +61,11 @@
   color: var(--md-default-fg-color--light);
 }
 
-/* 备用：普通 Markdown 图片 + 下方标题段落 */
-.md-typeset p.manual-figure-caption {
-  margin-top: -0.25em;
-  margin-bottom: 1.25em;
-  text-align: center;
-  font-size: 0.85em;
-  color: var(--md-default-fg-color--light);
-}
-
-.md-typeset p.manual-figure-caption + * {
-  margin-top: 0;
-}
-
 /* 3.1 线束说明表格（HTML rowspan） */
 .md-typeset table.wire-harness-table {
-  width: 100%;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto 1.25em;
   table-layout: fixed;
   border-collapse: collapse;
 }
@@ -50,30 +78,44 @@
   padding: 0.45rem 0.35rem;
 }
 
-.md-typeset table.wire-harness-table th:first-child,
-.md-typeset table.wire-harness-table td:first-child {
-  width: 120px;
+.md-typeset table.wire-harness-table thead th {
+  background-color: #eeeeee;
+  font-weight: 700;
 }
 
-.md-typeset table.wire-harness-table th:nth-child(2),
-.md-typeset table.wire-harness-table td:nth-child(2) {
-  width: 180px;
+.md-typeset table.wire-harness-table col.wh-col-a {
+  width: 9.5rem;
 }
 
-.md-typeset table.wire-harness-table th:nth-child(3),
-.md-typeset table.wire-harness-table td:nth-child(3) {
-  width: 230px;
+.md-typeset table.wire-harness-table col.wh-col-b {
+  width: 10.75rem;
 }
 
-.md-typeset table.wire-harness-table th {
-  font-weight: 600;
+.md-typeset table.wire-harness-table col.wh-col-pin {
+  width: 2.75rem;
 }
 
-.md-typeset table.wire-harness-table td img {
-  display: block;
-  margin: 0.25em auto;
-  max-width: 100%;
-  height: auto;
+.md-typeset table.wire-harness-table col.wh-col-def {
+  width: 11.5rem;
+}
+
+.md-typeset table.wire-harness-table col.wh-col-desc {
+  width: 13.5rem;
+}
+
+.md-typeset table.wire-harness-table td.wh-connector {
+  font-size: 0.92em;
+  line-height: 1.4;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+}
+
+.md-typeset table.wire-harness-table tbody td:nth-child(3) {
+  white-space: nowrap;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table.wire-harness-table thead th {
+  background-color: #424242;
 }
 
 /* DIFOP 等协议包定义表（rowspan / colspan） */
@@ -99,57 +141,307 @@
   background-color: #3a3a3a;
 }
 
-/* 手册重点说明（红色） */
-.md-typeset .manual-note-red {
-  color: #c62828;
+/* 产品协议一览表（MSOP 固定/压缩模式分行，见 EM4 表7） */
+.md-typeset table.product-protocol-table {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto 1.25em;
+  table-layout: fixed;
 }
 
-[data-md-color-scheme="slate"] .md-typeset .manual-note-red {
-  color: #ef5350;
+.md-typeset table.product-protocol-table col.pp-col-name {
+  width: 14rem;
 }
 
-/* 表 1：产品规格表 */
-.md-typeset table.product-spec-table {
+.md-typeset table.product-protocol-table col.pp-col-abbr {
+  width: 4.75rem;
+}
+
+.md-typeset table.product-protocol-table col.pp-col-func {
+  width: 7rem;
+}
+
+.md-typeset table.product-protocol-table col.pp-col-type {
+  width: 3.25rem;
+}
+
+.md-typeset table.product-protocol-table col.pp-col-size {
+  width: 15rem;
+}
+
+.md-typeset table.product-protocol-table col.pp-col-rate {
+  width: 13rem;
+}
+
+.md-typeset table.product-protocol-table th:nth-child(2),
+.md-typeset table.product-protocol-table th:nth-child(3),
+.md-typeset table.product-protocol-table th:nth-child(4),
+.md-typeset table.product-protocol-table td:nth-child(2),
+.md-typeset table.product-protocol-table td:nth-child(3),
+.md-typeset table.product-protocol-table td:nth-child(4) {
+  white-space: nowrap;
+}
+
+.md-typeset table.product-protocol-table td.protocol-size-compressed {
+  line-height: 1.45;
+  font-size: 0.92em;
+  white-space: normal;
+}
+
+.md-typeset table.product-protocol-table td:first-child {
+  white-space: normal;
+}
+
+/* MSOP 字段定义表（变量/偏置/长度居中，内容左对齐，见 EM4 表8） */
+.md-typeset table.msop-data-table {
   width: 100%;
-  border-collapse: collapse;
-  border: 1px solid #9e9e9e;
+  table-layout: fixed;
 }
 
-.md-typeset table.product-spec-table td {
-  padding: 0.55rem 0.75rem;
-  border-bottom: 1px solid #9e9e9e;
+.md-typeset table.msop-data-table col.msop-col-var {
+  width: 11rem;
+}
+
+.md-typeset table.msop-data-table col.msop-col-offset,
+.md-typeset table.msop-data-table col.msop-col-len {
+  width: 5.5rem;
+}
+
+.md-typeset table.msop-data-table td.msop-content {
+  text-align: left;
+  vertical-align: middle;
+  line-height: 1.5;
+}
+
+.md-typeset table.msop-data-table .msop-subline {
+  display: block;
+  padding-left: 1.25em;
+  margin-top: 0.2em;
+}
+
+.md-typeset table.msop-data-table .msop-note {
+  display: block;
+  padding-left: 1.25em;
+  margin-top: 0.2em;
+}
+
+/* 宽表横向滚动（不压住右侧目录；见表12 等） */
+.md-typeset .manual-table-scroll-wrap {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 0 0 1.25em;
+  -webkit-overflow-scrolling: touch;
+}
+
+.md-typeset .manual-table-scroll-wrap > table {
+  margin: 0;
+}
+
+/* 压缩块结构表（12 列合并，见 EM4 表12） */
+.md-typeset .manual-table-scroll-wrap table.compression-block-table {
+  width: max-content;
+  min-width: 100%;
+  table-layout: fixed;
+  font-size: 0.85em;
+}
+
+.md-typeset .manual-table-scroll-wrap table.compression-block-table th,
+.md-typeset .manual-table-scroll-wrap table.compression-block-table td {
+  padding: 0.35rem 0.25rem;
+}
+
+.md-typeset .manual-table-scroll-wrap table.compression-block-table thead th {
+  background-color: #eeeeee;
+  font-weight: 700;
+}
+
+.md-typeset .manual-table-scroll-wrap table.compression-block-table col.cb-col-fixed {
+  width: 3.25rem;
+}
+
+.md-typeset .manual-table-scroll-wrap table.compression-block-table col.cb-col-diff {
+  width: 3rem;
+}
+
+.md-typeset .manual-table-scroll-wrap table.compression-block-table col.cb-col-ellipsis {
+  width: 2rem;
+}
+
+.md-typeset .manual-table-scroll-wrap table.compression-block-table th,
+.md-typeset .manual-table-scroll-wrap table.compression-block-table td {
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .manual-table-scroll-wrap table.compression-block-table thead th {
+  background-color: #424242;
+}
+
+/* DIFOP 数据包字段表（分组 rowspan，见 EM4 表13） */
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table {
+  width: max-content;
+  min-width: 100%;
+  table-layout: fixed;
+  font-size: 0.88em;
+}
+
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table col.difop-col-group {
+  width: 8.5rem;
+}
+
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table col.difop-col-var {
+  width: 12rem;
+}
+
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table col.difop-col-offset,
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table col.difop-col-len {
+  width: 4.75rem;
+}
+
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table col.difop-col-content {
+  width: 10rem;
+}
+
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table td.difop-group {
+  font-weight: 600;
   vertical-align: middle;
 }
 
-.md-typeset table.product-spec-table tr:last-child td {
-  border-bottom: none;
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table td.difop-content {
+  text-align: left;
+  vertical-align: middle;
+  line-height: 1.45;
+  white-space: normal;
 }
 
-.md-typeset table.product-spec-table td:first-child {
-  width: 22%;
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table thead th {
+  background-color: #eeeeee;
+  font-weight: 700;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .manual-table-scroll-wrap table.difop-packet-table thead th {
+  background-color: #424242;
+}
+
+/* 接插件引脚定义表（见 EM4 附录 A） */
+.md-typeset table.connector-pin-table {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto 1.25em;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.md-typeset table.connector-pin-table th,
+.md-typeset table.connector-pin-table td {
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #9e9e9e;
+  padding: 0.45rem 0.75rem;
+}
+
+.md-typeset table.connector-pin-table thead th {
+  background-color: #eeeeee;
+  font-weight: 700;
+}
+
+.md-typeset table.connector-pin-table col.connector-col-pin {
+  width: 4.5rem;
+}
+
+.md-typeset table.connector-pin-table col.connector-col-def {
+  width: 9rem;
+}
+
+.md-typeset table.connector-pin-table col.connector-col-model {
+  width: 7.5rem;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table.connector-pin-table thead th {
+  background-color: #424242;
+}
+
+/* 故障排查表（两列，见 EM4 表15） */
+.md-typeset table.fault-troubleshoot-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.md-typeset table.fault-troubleshoot-table col.fault-col-phenomenon {
+  width: 32%;
+}
+
+.md-typeset table.fault-troubleshoot-table col.fault-col-solution {
+  width: 68%;
+}
+
+.md-typeset table.fault-troubleshoot-table th,
+.md-typeset table.fault-troubleshoot-table td {
+  border: 1px solid #9e9e9e;
+  padding: 0.5rem 0.75rem;
+  vertical-align: top;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.md-typeset table.fault-troubleshoot-table thead th {
+  background-color: #eeeeee;
+  font-weight: 700;
+  vertical-align: middle;
+  text-align: center;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table.fault-troubleshoot-table thead th {
+  background-color: #424242;
+}
+
+/* 规格参数分栏表（节标题灰底、四列/输出区两列，如 EM4 表2） */
+.md-typeset table.manual-spec-grid-table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #9e9e9e;
+  margin: 0 0 0.5em;
+}
+
+.md-typeset table.manual-spec-grid-table th,
+.md-typeset table.manual-spec-grid-table td {
+  border: 1px solid #9e9e9e;
+  padding: 0.5rem 0.75rem;
+  vertical-align: middle;
+}
+
+.md-typeset table.manual-spec-grid-table tr.section-head th {
+  background-color: #eeeeee;
+  text-align: center;
+  font-weight: 700;
+}
+
+.md-typeset table.manual-spec-grid-table td.spec-label {
+  width: 18%;
   text-align: center;
   font-weight: 600;
-  border-right: none;
 }
 
-.md-typeset table.product-spec-table td:last-child {
+.md-typeset table.manual-spec-grid-table td.spec-value {
   text-align: left;
-  border-left: none;
 }
 
-.md-typeset table.product-spec-table ul {
-  margin: 0;
-  padding-left: 1.25em;
-}
-
-.md-typeset table.product-spec-table li {
-  margin: 0.2em 0;
-}
-
-.md-typeset table.product-spec-table .spec-subline {
+.md-typeset table.manual-spec-grid-table .spec-subline {
   display: block;
   padding-left: 1.25em;
   margin-top: 0.15em;
+}
+
+.md-typeset table.manual-spec-grid-table .spec-note-line {
+  display: block;
+  margin-top: 0.35em;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table.manual-spec-grid-table tr.section-head th {
+  background-color: #424242;
 }
 
 .md-typeset .spec-footnotes {
@@ -161,4 +453,56 @@
 
 .md-typeset .spec-footnotes p {
   margin: 0.35em 0;
+}
+
+/* 表题 + 居中数据表（灰表头、横线分隔，如表1 FOV） */
+.md-typeset p.manual-table-caption {
+  text-align: center;
+  font-weight: 700;
+  margin: 0.75em auto 0.35em;
+}
+
+.md-typeset .manual-table-wrap {
+  margin: 0 auto 1.25em;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.md-typeset .manual-table-wrap table {
+  margin: 0;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #bdbdbd;
+}
+
+.md-typeset .manual-table-wrap th,
+.md-typeset .manual-table-wrap td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.45rem 1.25rem;
+  border: 0;
+  border-bottom: 1px solid #bdbdbd;
+}
+
+.md-typeset .manual-table-wrap thead th {
+  background-color: #eeeeee;
+  font-weight: 700;
+  border-bottom: 1px solid #9e9e9e;
+}
+
+.md-typeset .manual-table-wrap tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .manual-table-wrap table {
+  border-color: #616161;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .manual-table-wrap thead th {
+  background-color: #424242;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .manual-table-wrap th,
+[data-md-color-scheme="slate"] .md-typeset .manual-table-wrap td {
+  border-bottom-color: #616161;
 }
