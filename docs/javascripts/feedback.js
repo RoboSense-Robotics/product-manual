@@ -70,12 +70,14 @@
 
   function setOpen(isOpen) {
     var dialog = document.getElementById("feedback-dialog");
+    var backdrop = document.getElementById("feedback-backdrop");
     var launcher = document.getElementById("feedback-launcher");
-    if (!dialog || !launcher) {
+    if (!dialog || !backdrop || !launcher) {
       return;
     }
 
     dialog.hidden = !isOpen;
+    backdrop.hidden = !isOpen;
     launcher.setAttribute("aria-expanded", isOpen ? "true" : "false");
     document.body.classList.toggle("feedback-open", isOpen);
 

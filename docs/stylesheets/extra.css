@@ -610,16 +610,23 @@ body.feedback-open {
   fill: currentColor;
 }
 
-.feedback-backdrop {
+.feedback-backdrop,
+.feedback-dialog {
   position: fixed;
   inset: 0;
+}
+
+.feedback-backdrop {
   z-index: 46;
   background: rgba(0, 0, 0, 0.42);
 }
 
+.feedback-backdrop[hidden],
+.feedback-dialog[hidden] {
+  display: none !important;
+}
+
 .feedback-dialog {
-  position: fixed;
-  inset: 0;
   z-index: 47;
   display: flex;
   align-items: center;
