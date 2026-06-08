@@ -50,11 +50,13 @@ function sanitizeText(value, maxLength) {
 
 function buildFeishuText(payload) {
   const lines = [
-    "【产品手册反馈】",
-    `相关产品：${payload.product}`,
+    "📋 产品手册反馈",
+    "────────────────",
+    `产品：${payload.product}`,
     `页面：${payload.pageUrl}`,
-    `联系邮箱：${payload.email || "未填写"}`,
+    `邮箱：${payload.email || "未填写"}`,
     "",
+    "反馈内容：",
     payload.message,
   ];
   return lines.join("\n");
