@@ -37,30 +37,6 @@
   max-width: 100%;
 }
 
-/* 图 + 图下居中标题（配合 <figure markdown> + <figcaption>） */
-.md-typeset figure {
-  display: block;
-  margin: 1.25em auto;
-  max-width: 100%;
-  text-align: center;
-}
-
-.md-typeset figure img {
-  display: block;
-  margin: 0 auto;
-  max-width: min(100%, 720px);
-  height: auto;
-}
-
-.md-typeset figure figcaption {
-  display: block;
-  margin-top: 0.5em;
-  text-align: center;
-  font-size: 0.85em;
-  line-height: 1.5;
-  color: var(--md-default-fg-color--light);
-}
-
 /* 3.1 线束说明表格（HTML rowspan） */
 .md-typeset table.wire-harness-table {
   width: max-content;

@@ -51,7 +51,7 @@ mkdocs serve
 | `manual-img--sm` | 200px |
 | `manual-img--md` | 360px（与默认单行图一致） |
 | `manual-img--lg` | 560px |
-| `manual-img--xl` | 720px（与 `figure` 内大图一致） |
+| `manual-img--xl` | 720px |
 | `manual-img--full` | 100% 正文宽 |
 
 指定像素宽度（高度按比例缩放）：
