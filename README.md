@@ -60,24 +60,14 @@ mkdocs serve
 ![](assets/em4/end.jpg){ width="480" }
 ```
 
+图下居中标题：
+
 ```
 ![](assets/em4/4.4.jpg)
-
 <p align="center" style="font-size: 0.9em; color: gray;">示意图</p>
 ```
 
-图下居中标题（需 `mkdocs.yml` 中 `md_in_html`，样式见 `docs/stylesheets/extra.css`）。在 `mkdocs serve` 预览，IDE 自带 Markdown 预览通常不支持：
-
-```html
-    <figure markdown>
-      ![简述](assets/em4/example.png)
-      <figcaption>图 1：示意图</figcaption>
-    </figure>
-```
-
-（`figure` 块缩进 4 格，可挂在有序列表某一节下，避免步骤编号被打断。）
-
-注意：不要用以 `/` 开头的绝对路径（GitHub Pages 在 `/product-manual/` 子路径下会 404）。MinerU CDN 外链可保留，新图或需长期维护的图建议放 `assets/`。
+注意：不要用以 `/` 开头的绝对路径（GitHub Pages 在 `/product-manual/` 子路径下会 404）
 
 ## 语义化提示框（Admonitions）
 
