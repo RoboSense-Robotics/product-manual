@@ -253,16 +253,3 @@ npx wrangler deploy
 
 在 `mkdocs.yml` 的 `nav` 登记新手册后，同步更新 `docs/javascripts/feedback-config.js` 的 `products` 数组，以及 `docs/javascripts/feedback.js` 里的 `PAGE_PRODUCT_MAP`（用于自动预选产品）。
 
-## 从 PDF 导入后处理 HTML 表格
-
-若 Markdown 中含 `<table>...</table>`，可在虚拟环境中运行：
-
-```bash
-source .venv/bin/activate
-pip install beautifulsoup4 lxml   # 首次需要
-python scripts/html_tables_to_markdown.py docs/你的文件.md
-python scripts/fix_markdown_table_separators.py docs/你的文件.md
-python scripts/ensure_blank_before_headings.py docs/你的文件.md
-```
-
-`Airy.md` 已使用原生 Markdown 表格；`AiryLite.md`、`E1_CN.md`、`E1R_CN.md`、`EM4_CN.md`、`EMX_CN.md` 等已完成 HTML 表格转换。
