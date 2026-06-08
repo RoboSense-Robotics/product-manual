@@ -1,6 +1,10 @@
 site_name: 公司产品手册
 site_url: https://RoboSense-Robotics.github.io/product-manual/  # GitHub Pages 地址
 
+# 片段仅通过 pymdownx.snippets 插入，不作为独立页面发布，避免相对路径误报
+exclude_docs: |
+  snippets/*
+
 nav:
   - 首页: index.md
   - EM平台激光雷达:
@@ -37,6 +41,8 @@ plugins:
 
 # 核心配置：扩展 Markdown 语法以支持公式和图表
 markdown_extensions:
+  - admonition
+  - pymdownx.details
   - md_in_html # <figure markdown> 内嵌图片与 <figcaption> 图题
   - attr_list
   - pymdownx.arithmatex: # 公式支持 (MathJax)
@@ -46,6 +52,10 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.snippets:
+      base_path:
+        - docs
+      check_paths: true
   - tables # 原生表格增强支持
 
 extra_css:

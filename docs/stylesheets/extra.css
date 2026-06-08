@@ -506,3 +506,71 @@
 [data-md-color-scheme="slate"] .md-typeset .manual-table-wrap td {
   border-bottom-color: #616161;
 }
+
+/* 网络配置表：端口号列 rowspan，整行分隔线对齐 */
+.md-typeset .manual-table-wrap table.manual-network-table {
+  table-layout: fixed;
+}
+
+.md-typeset .manual-table-wrap table.manual-network-table col.net-col-device {
+  width: 88px;
+}
+
+.md-typeset .manual-table-wrap table.manual-network-table col.net-col-ip {
+  width: 128px;
+}
+
+.md-typeset .manual-table-wrap table.manual-network-table col.net-col-port {
+  width: 96px;
+}
+
+.md-typeset .manual-table-wrap table.manual-network-table th,
+.md-typeset .manual-table-wrap table.manual-network-table td {
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: none;
+  border-right: 1px solid #bdbdbd;
+  line-height: 1.35;
+}
+
+/* 末列去右边框；不用 :last-child，避免 rowspan 行里末格不是第 5 列 */
+.md-typeset .manual-table-wrap table.manual-network-table thead th:nth-child(5),
+.md-typeset .manual-table-wrap table.manual-network-table tbody td:nth-child(5) {
+  border-right: none;
+}
+
+.md-typeset .manual-table-wrap table.manual-network-table thead th {
+  border-bottom: 1px solid #9e9e9e;
+  padding: 0.5rem 0.65rem;
+}
+
+.md-typeset .manual-table-wrap table.manual-network-table tbody td:first-child,
+.md-typeset .manual-table-wrap table.manual-network-table tbody td:nth-child(2) {
+  white-space: nowrap;
+}
+
+.md-typeset .manual-table-wrap table.manual-network-table td[rowspan] {
+  padding: 0;
+  position: relative;
+}
+
+.md-typeset .manual-table-wrap table.manual-network-table .network-port-value {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.md-typeset .manual-table-wrap table.manual-network-table tbody tr:not(:last-child) > td:not([rowspan]) {
+  border-bottom: 1px solid #bdbdbd;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .manual-table-wrap table.manual-network-table tbody tr:not(:last-child) > td:not([rowspan]) {
+  border-bottom-color: #616161;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .manual-table-wrap table.manual-network-table th,
+[data-md-color-scheme="slate"] .md-typeset .manual-table-wrap table.manual-network-table td {
+  border-right-color: #616161;
+}
