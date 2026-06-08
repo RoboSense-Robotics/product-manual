@@ -208,6 +208,51 @@ mkdocs serve
 | `connector-pin-table` | 接插件引脚定义（标题行 + 型号 `rowspan`；见 EM4 **附录 A**） |
 | `wire-harness-table` | 线束说明（含合并单元格，HTML 表格；见 EM4 **3.1.1 表4**） |
 
+## 意见反馈（飞书群）
+
+全站右下角有悬浮反馈按钮，点击后弹出表单（相关产品、问题描述、联系邮箱），提交后经 **Cloudflare Worker** 转发到飞书群机器人。
+
+### 前端文件
+
+| 文件 | 作用 |
+| --- | --- |
+| `docs/javascripts/feedback-config.js` | 产品列表与 API 地址占位符 |
+| `docs/javascripts/feedback.js` | 悬浮球、弹窗与提交逻辑 |
+| `docs/stylesheets/extra.css` | 反馈组件样式 |
+
+「相关产品」选项与 `mkdocs.yml` 的 `nav` 手册名称一致；打开某本手册时会自动预选对应产品。
+
+### 部署 Cloudflare Worker（一次性）
+
+仓库已包含 Worker 代码（`cloudflare-worker/`），**无需**再运行 `npm create cloudflare`。旧版 C3 的 `--workers-only` 在新版 create-cloudflare（v2.x）中已移除，因此会报 `Unrecognized option: workers-only`。
+
+1. 在飞书群添加**自定义机器人**，复制 Webhook 地址（仅通过 `wrangler secret` 配置，勿写入仓库）。
+2. 若尚无 `cloudflare-worker/wrangler.toml`，从 `wrangler.toml.example` 复制一份，并按需修改 `ALLOWED_ORIGINS`（须包含 GitHub Pages 来源，如 `https://robosense-robotics.github.io`，本地调试可加 `http://127.0.0.1:8000`）。
+3. 登录 Cloudflare 并部署：
+
+```bash
+cd cloudflare-worker
+npx wrangler login          # 首次需浏览器授权
+npx wrangler secret put FEISHU_WEBHOOK_URL   # 粘贴飞书 Webhook
+npx wrangler deploy
+```
+
+4. 记录终端输出的 Worker 公网地址（例如 `https://product-manual-feedback.xxx.workers.dev`）。
+
+### 配置 GitHub Pages 构建
+
+在仓库 **Settings → Secrets and variables → Actions** 中新增：
+
+- `FEEDBACK_API_URL`：上一步 Worker 地址
+
+推送 `main` 后，CI 会在 `mkdocs build` 前把该地址写入 `feedback-config.js`。
+
+本地预览时，可手动将 `docs/javascripts/feedback-config.js` 里的 `__FEEDBACK_API_URL__` 替换为 Worker 地址后再 `mkdocs serve`。
+
+### 新增手册时
+
+在 `mkdocs.yml` 的 `nav` 登记新手册后，同步更新 `docs/javascripts/feedback-config.js` 的 `products` 数组，以及 `docs/javascripts/feedback.js` 里的 `PAGE_PRODUCT_MAP`（用于自动预选产品）。
+
 ## 从 PDF 导入后处理 HTML 表格
 
 若 Markdown 中含 `<table>...</table>`，可在虚拟环境中运行：

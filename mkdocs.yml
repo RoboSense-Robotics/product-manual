@@ -64,3 +64,5 @@ extra_css:
 # MathJax 3
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - javascripts/feedback-config.js
+  - javascripts/feedback.js

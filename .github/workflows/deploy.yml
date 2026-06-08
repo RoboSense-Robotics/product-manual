@@ -36,7 +36,12 @@ jobs:
         uses: actions/configure-pages@v5
         
       - name: Build with MkDocs
+        env:
+          FEEDBACK_API_URL: ${{ secrets.FEEDBACK_API_URL }}
         run: |
+          if [ -n "$FEEDBACK_API_URL" ]; then
+            sed -i "s|__FEEDBACK_API_URL__|${FEEDBACK_API_URL}|g" docs/javascripts/feedback-config.js
+          fi
           mkdocs build # 编译出 site 文件夹
           
       - name: Upload artifact
