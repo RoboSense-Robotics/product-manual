@@ -1,4 +1,4 @@
-site_name: 公司产品手册
+site_name: RoboSense wiki
 site_url: https://RoboSense-Robotics.github.io/product-manual/  # GitHub Pages 地址
 
 # 片段仅通过 pymdownx.snippets 插入，不作为独立页面发布，避免相对路径误报
@@ -21,15 +21,21 @@ nav:
 theme:
   name: material
   language: zh          # 切换为中文界面
+  favicon: assets/images/robosense.png   # 浏览器标签页图标（RoboSense logo）
+  icon:
+    logo: material/home-outline          # 顶栏左上角 logo 图标
+  font:
+    text: Noto Sans SC  # 正文字体（与速腾官网手册一致）
+    code: Roboto Mono
   palette:
     - scheme: default   # 日间模式
-      primary: indigo
-      accent: indigo
+      primary: red      # 速腾品牌红（精确色值在 extra.css 覆盖）
+      accent: red
     - scheme: slate     # 夜间模式
-      primary: indigo
-      accent: indigo
+      primary: red
+      accent: red
   features:
-    - navigation.tabs   # 顶部导航栏模式（适合多手册分类）
+    - navigation.sections # 左侧栏按平台分组展示（复刻 robosense 品牌侧栏）
     - navigation.top    # 回到顶部按钮
     - toc.follow        # 右侧目录随滚动高亮当前章节
     - search.suggest    # 搜索建议提示

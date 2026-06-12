@@ -1,3 +1,435 @@
+/* ============================================================
+   字体（@import 必须位于文件最顶部）
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
+/* ============================================================
+   RoboSense 品牌主题层（对齐 robosense_manual_site 视觉风格）
+   速腾红 #e21d23 · Roboto Slab 标题 · 蓝色正文链接
+   ============================================================ */
+
+/* ============================================================
+   首页产品卡片（.rs-home / .rs-psec / .rs-card）
+   ============================================================ */
+:root {
+  --rs-card-bg:   #17191d;
+  --rs-card-bg2:  #1f2228;
+  --rs-card-bd:   #23262c;
+  --rs-card-bd-h: #33373f;
+}
+
+/* 首页容器：清掉 Material 给 typeset 子元素的默认 margin，避免大段空白 */
+.rs-home { padding: 0 0 28px; }
+.md-typeset .rs-home > *,
+.md-typeset .rs-home section,
+.md-typeset .rs-home .rs-hero { margin-top: 0; }
+
+/* Hero */
+.rs-hero { padding: 4px 0 8px; }
+.rs-hero__eyebrow {
+  font-family: var(--rs-disp);
+  color: var(--rs-red);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.md-typeset .rs-hero__title {
+  font-family: var(--rs-disp);
+  font-weight: 700;
+  font-size: 30px;
+  color: var(--rs-ink);
+  margin: 0;
+}
+/* 首页大标题不要正文那条红色短横线 */
+.md-typeset .rs-hero__title::after { content: none; }
+
+/* Platform sections */
+.rs-psec { padding: 18px 0 6px; }
+.rs-psec__head {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.rs-psec__badge {
+  font-family: var(--rs-disp);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 5px 13px;
+  border-radius: 8px;
+  color: #fff;
+  white-space: nowrap;
+}
+.rs-psec--em .rs-psec__badge { background: #cf9319; }
+.rs-psec--e  .rs-psec__badge { background: #9b4d97; }
+.rs-psec--r  .rs-psec__badge { background: #0f9d8f; }
+.rs-psec--m  .rs-psec__badge { background: #3a6fc4; }
+.md-typeset .rs-psec__title {
+  font-family: var(--rs-disp);
+  font-weight: 700;
+  font-size: 21px;
+  color: var(--rs-ink);
+  margin: 0;
+  border-left: 0;
+  padding-left: 0;
+}
+.md-typeset .rs-psec__title::after { content: none; }
+.rs-psec__cnt { font-size: 13px; color: #9aa0a8; }
+.rs-psec__ln { flex: 1; height: 1px; background: #e7e9ec; min-width: 20px; }
+
+/* Card grid */
+.rs-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+@media (max-width: 1200px) { .rs-cards { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 860px)  { .rs-cards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px)  { .rs-cards { grid-template-columns: 1fr; } }
+
+/* Individual card */
+.rs-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--rs-card-bg);
+  border: 1px solid var(--rs-card-bd);
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+}
+.rs-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--rs-card-bd-h);
+  box-shadow: 0 20px 40px -24px rgba(0,0,0,.55);
+}
+
+/* Card image area */
+.rs-card__img {
+  height: 148px;
+  background: radial-gradient(ellipse 70% 60% at 50% 38%, #2a2e35, #0c0d10);
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+.rs-card__glyph { font-size: 44px; color: #41464f; transition: color .2s; }
+.rs-card:hover .rs-card__glyph { color: #565c66; }
+.rs-card__wm {
+  position: absolute;
+  right: 13px; bottom: 10px;
+  font-family: var(--rs-disp);
+  font-size: 11px;
+  color: #3c4148;
+  letter-spacing: .05em;
+}
+.rs-card__pill {
+  position: absolute;
+  left: 13px; top: 13px;
+  font-size: 10.5px;
+  color: #cfd3da;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.14);
+  padding: 3px 9px;
+  border-radius: 20px;
+}
+
+/* Card meta */
+.rs-card__meta {
+  padding: 14px 16px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.rs-card__name {
+  font-family: var(--rs-disp);
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+  margin: 0;
+}
+.rs-card__view {
+  font-size: 13px;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.28);
+  padding: 6px 13px;
+  border-radius: 9px;
+  white-space: nowrap;
+  transition: background .15s, border-color .15s;
+}
+.rs-card:hover .rs-card__view {
+  background: var(--rs-red);
+  border-color: var(--rs-red);
+}
+
+/* ============================================================
+   侧栏头部红色 Logo 区（补强）
+   ============================================================ */
+
+:root {
+  /* 用精确品牌色覆盖 Material 的 red 预设 */
+  --md-primary-fg-color:            #e21d23;
+  --md-primary-fg-color--light:     #e8484d;
+  --md-primary-fg-color--dark:      #c5161b;
+  --md-accent-fg-color:             #e21d23;
+  --md-accent-fg-color--transparent: rgba(226, 29, 35, 0.10);
+}
+
+/* Material 用属性选择器定义调色板，优先级高于 :root —— 必须用同等选择器覆盖，
+   否则顶栏会保留 Material 默认浅红，与侧栏品牌红产生色差 */
+[data-md-color-primary="red"] {
+  --md-primary-fg-color:        #e21d23;
+  --md-primary-fg-color--light: #e21d23;
+  --md-primary-fg-color--dark:  #c5161b;
+
+  /* 参考站配套色 */
+  --rs-red:    #e21d23;
+  --rs-red-d:  #c5161b;
+  --rs-blue:   #2980b9;
+  --rs-ink:    #2b2b2b;
+  --rs-disp:   'Roboto Slab', 'Noto Sans SC', serif;
+
+  /* 正文链接改为参考站的蓝色 */
+  --md-typeset-a-color: #2980b9;
+}
+
+/* 顶栏文字/图标在红底上保持白色（Material 已处理，这里固化对比度） */
+.md-header,
+.md-tabs {
+  color: #ffffff;
+}
+
+/* 标题统一使用展示字体 Roboto Slab，呼应参考站 */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5,
+.md-header__title,
+.md-nav__title {
+  font-family: var(--rs-disp);
+}
+
+.md-typeset h1 {
+  color: var(--rs-ink);
+  font-weight: 700;
+}
+
+/* 左侧导航：当前条目用红色左边框 + 红字，复刻参考站 active 样式 */
+.md-nav__link--active,
+.md-nav__item .md-nav__link--active {
+  color: var(--rs-red);
+  font-weight: 700;
+}
+
+.md-nav__list .md-nav__item > .md-nav__link--active {
+  border-left: 3px solid var(--rs-red);
+  padding-left: calc(0.6rem - 3px);
+}
+
+/* 右侧目录（TOC）当前章节高亮为品牌红 */
+.md-nav--secondary .md-nav__link--active {
+  color: var(--rs-red);
+}
+
+/* 正文链接 hover 加深 */
+.md-typeset a:hover {
+  color: var(--rs-red-d);
+}
+
+/* 搜索框聚焦、各类强调元素跟随品牌红（accent 已覆盖，此处补强） */
+.md-search__input:focus,
+.md-search__input:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* 行内代码与提示块强调色对齐红系，避免残留靛蓝 */
+.md-typeset .md-button--primary {
+  background-color: var(--rs-red);
+  border-color: var(--rs-red);
+  color: #ffffff;
+}
+.md-typeset .md-button--primary:hover {
+  background-color: var(--rs-red-d);
+  border-color: var(--rs-red-d);
+}
+
+/* 暗色模式下保持品牌红主色 */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:        #e21d23;
+  --md-primary-fg-color--light: #e8484d;
+  --md-primary-fg-color--dark:  #c5161b;
+  --md-accent-fg-color:         #e8484d;
+  --md-typeset-a-color:         #5aa9dc;
+}
+
+/* ============================================================
+   深色左侧栏（复刻 robosense_manual_site 侧栏）
+   仅作用于主侧栏；右侧 TOC「目录」保持浅色
+   ============================================================ */
+:root {
+  --rs-side:     #2d2b2a;  /* 侧栏底色 */
+  --rs-side-2:   #262423;  /* hover 底色 */
+  --rs-side-hi:  #3a3836;  /* active 底色 */
+  --rs-side-txt: #d6d2cf;  /* 一级文字 */
+  --rs-side-dim: #9a938e;  /* 二级文字 */
+}
+
+/* 侧栏整体深色 */
+.md-sidebar--primary {
+  background-color: var(--rs-side);
+}
+.md-sidebar--primary .md-sidebar__scrollwrap {
+  background-color: var(--rs-side);
+}
+.md-sidebar--primary .md-sidebar__scrollwrap::-webkit-scrollbar {
+  width: 7px;
+}
+.md-sidebar--primary .md-sidebar__scrollwrap::-webkit-scrollbar-thumb {
+  background: #555049;
+  border-radius: 4px;
+}
+
+/* 顶部「RoboSense wiki」红块：仅作用于主侧栏最外层标题 */
+.md-sidebar--primary > .md-sidebar__scrollwrap > .md-nav--primary > .md-nav__title {
+  color: #ffffff;
+  background-color: var(--md-primary-fg-color);
+}
+
+/* 隐藏嵌套分组内的标题副本（移动端抽屉才用，桌面会造成多余缩进/重复） */
+.md-sidebar--primary .md-nav .md-nav__title {
+  display: none;
+}
+
+/* 清零 Material 嵌套 nav/list/item 自带的左右边距与内边距，统一由 link 控制缩进 */
+.md-sidebar--primary .md-nav,
+.md-sidebar--primary .md-nav__list,
+.md-sidebar--primary .md-nav__item {
+  margin: 0;
+  padding: 0;
+}
+
+/* 所有条目基础样式：红条用内阴影实现（不挤压文字） */
+.md-sidebar--primary .md-nav__link {
+  color: var(--rs-side-dim);
+  margin: 0;
+  padding-top: .42rem;
+  padding-bottom: .42rem;
+  padding-right: .8rem;
+  box-shadow: inset 3px 0 0 transparent;
+  transition: background-color .12s, color .12s, box-shadow .12s;
+}
+.md-sidebar--primary .md-nav__link:hover {
+  color: #ffffff;
+  background-color: var(--rs-side-2);
+}
+
+/* —— 第一层：首页 + 平台分组标题，统一左基线 1rem —— */
+.md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link {
+  padding-left: 1rem;
+}
+
+/* 平台分组标题白色加粗（与首页同一基线，仅字色/字重不同） */
+.md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav__link {
+  color: #ffffff;
+  font-family: var(--rs-disp);
+  font-weight: 500;
+}
+
+/* —— 第二层：产品条目，缩进 1.9rem —— */
+.md-sidebar--primary .md-nav--primary .md-nav .md-nav__list > .md-nav__item > .md-nav__link {
+  padding-left: 1.9rem;
+}
+
+/* 当前条目：红色左条（内阴影）+ 白字 + 深色高亮底，文字不偏移 */
+.md-sidebar--primary .md-nav__link--active {
+  color: #ffffff;
+  box-shadow: inset 3px 0 0 var(--rs-red);
+  background-color: var(--rs-side-hi);
+  font-weight: 700;
+}
+
+/* 展开/折叠箭头图标变浅，深底上可见 */
+.md-sidebar--primary .md-nav__icon,
+.md-sidebar--primary .md-nav__button {
+  color: var(--rs-side-dim);
+}
+
+/* 暗色模式下侧栏维持同一深色，不被 slate 主题覆盖 */
+[data-md-color-scheme="slate"] .md-sidebar--primary,
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap {
+  background-color: var(--rs-side);
+}
+
+/* ============================================================
+   正文内容细节优化
+   ============================================================ */
+
+/* 正文背景微暖灰，区别于纯白 */
+.md-content { background: #f6f7f9; }
+.md-content__inner { background: #fff; border-radius: 12px; padding: 1.2rem 2.4rem 1.6rem; margin: .6rem 0; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+/* 首页内容区取消多余顶/底留白，更紧凑 */
+.md-content__inner:has(.rs-home) { padding-top: .6rem; }
+.md-typeset .rs-home { margin: 0; }
+
+/* h1 下方红色分割线 */
+.md-typeset h1::after {
+  content: '';
+  display: block;
+  margin-top: 10px;
+  height: 3px;
+  width: 48px;
+  background: var(--rs-red);
+  border-radius: 2px;
+}
+
+/* h2 左侧红色边框 */
+.md-typeset h2 {
+  border-left: 4px solid var(--rs-red);
+  padding-left: .65rem;
+  margin-left: -4px;
+}
+
+/* 正文表格样式对齐参考站 */
+.md-typeset table:not([class]) {
+  border-collapse: collapse;
+  width: 100%;
+}
+.md-typeset table:not([class]) th {
+  background: #eeeeee;
+  font-weight: 700;
+  text-align: center;
+}
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+  border: 1px solid #9e9e9e;
+  padding: .5rem .75rem;
+  vertical-align: middle;
+}
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background: #424242;
+}
+[data-md-color-scheme="slate"] .md-content { background: #1a1c20; }
+[data-md-color-scheme="slate"] .md-content__inner { background: #22252b; }
+
+/* ============================================================
+   侧栏顶部 site title 红底白字强化
+   ============================================================ */
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg { filter: brightness(0) invert(1); }
+
+/* 顶部 tab 栏字重 */
+.md-tabs__link { font-family: var(--rs-disp); font-weight: 500; }
+.md-tabs__link--active,
+.md-tabs__link:hover { opacity: 1; }
+
+/* ============================================================
+   以下为本项目原有的手册正文表格/图片样式（保持不变）
+   ============================================================ */
 /* 独立成段的 Markdown 图片居中（如 1.5 节安全标识图） */
 .md-typeset p:has(> img:only-child) {
   text-align: center;
