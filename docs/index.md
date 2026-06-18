@@ -20,7 +20,8 @@
 
 | 产品 | 说明 |
 | --- | --- |
-| [Airy](Airy.md) | Airy 激光雷达产品手册（V1.3） |
+| [Airy](Airy_CN.md) | Airy 激光雷达产品手册（V1.3） |
+| [Airy Lite](AiryLite_CN.md) | Airy Lite 激光雷达产品手册（V2.0） |
 | [Fairy (48T1)](Fairy_CN_48T1.md) | Fairy 48 线激光雷达产品手册（V1.0） |
 | [Fairy (48TX)](Fairy_CN_48TX.md) | Fairy 48TX 激光雷达产品手册（V1.0） |
 
