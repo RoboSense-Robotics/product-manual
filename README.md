@@ -7,7 +7,7 @@ RoboSense 公司产品手册（MkDocs Material），部署于 GitHub Pages。
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install mkdocs-material
+pip install mkdocs-material mkdocs-static-i18n
 mkdocs serve
 ```
 
@@ -15,9 +15,9 @@ mkdocs serve
 
 ## 添加文档
 
-1. 在 `docs/` 下新增 `.md` 文件
+1. 在 `docs/zh/`、`docs/en/` 下各新增同名 `.md`（如 `EM4.md`）
 2. 在 `mkdocs.yml` 的 `nav` 中按平台分类登记（EM / E / R）
-3. 在 `docs/index.md` 对应平台章节补充链接
+3. 在 `docs/zh/index.md`、`docs/en/index.md` 对应平台章节补充链接
 
 ## 插入本地图片
 
@@ -25,7 +25,7 @@ mkdocs serve
 
 | 目录 | 对应手册 |
 | --- | --- |
-| `docs/assets/em4/` | `EM4_CN.md` |
+| `docs/assets/em4/` | `docs/zh/EM4.md` |
 | `docs/assets/<产品>/` | 其他产品同理 |
 
 在 `docs/` 下的 Markdown 中引用（路径相对于该 `.md` 文件）：
@@ -113,7 +113,7 @@ mkdocs serve
 
 ### 参考示例
 
-- `docs/EM4_CN.md` → **1.2 使用规范**、**1.3 违规操作**（正文来自 `docs/snippets/safety-reminder.md`）
+- `docs/zh/EM4.md` → **1.2 使用规范**、**1.3 违规操作**（正文来自 `docs/snippets/safety-reminder.md`）
 
 ## 文本片段复用（Snippets）
 
@@ -147,7 +147,7 @@ mkdocs serve
 ### 参考示例
 
 - 片段：`docs/snippets/safety-reminder.md`
-- 引用：`docs/EM4_CN.md` → **1 安全提示**
+- 引用：`docs/zh/EM4.md` → **1 安全提示**
 
 ## 表题 + 居中灰表头数据表
 
@@ -181,7 +181,7 @@ mkdocs serve
 
 ### 参考示例
 
-`docs/EM4_CN.md` → **2.3 FOV 分布** →「表1 EM4-T FOV」；**2.4 规格参数** →「表2 相关参数规格」（`manual-spec-grid-table` + `spec-footnotes`）。
+`docs/zh/EM4.md` → **2.3 FOV 分布** →「表1 EM4-T FOV」；**2.4 规格参数** →「表2 相关参数规格」（`manual-spec-grid-table` + `spec-footnotes`）。
 
 ### 与其它表格样式的区别
 

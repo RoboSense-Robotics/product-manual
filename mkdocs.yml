@@ -8,20 +8,20 @@ exclude_docs: |
 nav:
   - 首页: index.md
   - EM平台激光雷达:
-    - EM4: EM4_CN.md
-    - EMX: EMX_CN.md
+    - EM4: EM4.md
+    - EMX: EMX.md
   - E平台激光雷达:
-    - E1R: E1R_CN.md
-    - E1: E1_CN.md
+    - E1R: E1R.md
+    - E1: E1.md
   - R平台激光雷达:
-    - Airy: Airy_CN.md
-    - Airy Lite: AiryLite_CN.md
-    - Fairy (48T1): Fairy_CN_48T1.md
-    - Fairy (48TX): Fairy_CN_48TX.md
+    - Airy: Airy.md
+    - Airy Lite: AiryLite.md
+    - Fairy (48T1): Fairy_48T1.md
+    - Fairy (48TX): Fairy_48TX.md
 
 theme:
   name: material
-  language: zh          # 切换为中文界面
+  language: zh          # 默认中文界面（英文见 i18n 语言块覆盖）
   favicon: assets/images/robosense.png   # 浏览器标签页图标（RoboSense logo）
   icon:
     logo: material/home-outline          # 顶栏左上角 logo 图标
@@ -42,9 +42,31 @@ theme:
     - search.suggest    # 搜索建议提示
     - search.highlight  # 搜索词高亮
 
-# 开启内置全文搜索引擎
 plugins:
   - search
+  - i18n:
+      docs_structure: folder
+      fallback_to_default: false
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: zh
+          default: true
+          name: 简体中文
+          build: true
+        - locale: en
+          name: English
+          build: true
+          nav_translations:
+            首页: Home
+            EM平台激光雷达: EM Platform LiDAR
+            E平台激光雷达: E Platform LiDAR
+            R平台激光雷达: R Platform LiDAR
+          theme:
+            language: en
+            font:
+              text: Roboto
+              code: Roboto Mono
 
 # 核心配置：扩展 Markdown 语法以支持公式和图表
 markdown_extensions:

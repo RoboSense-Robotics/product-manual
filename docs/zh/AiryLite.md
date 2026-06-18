@@ -1,4 +1,4 @@
-# Airy Lite 用户手册
+# Airy Lite 产品手册
 
 ![image](https://cdn-mineru.openxlab.org.cn/result/2026-05-29/acdc8ce2-4b9f-4a84-9ff8-d25746acdaf7/c28d43229bff7f2b955350469ee77201cc7f53bf3de366c0b2476ddfbd51a792.jpg)
 
@@ -692,4 +692,4 @@ $$
 
 <table><tr><td>通道序号</td><td>发射延时(μs)</td><td>通道序号</td><td>发射延时(μs)</td></tr><tr><td>00-05</td><td>0</td><td>12-17</td><td>64</td></tr><tr><td>06-11</td><td>21</td><td>18-23</td><td>107</td></tr></table>
 
-![](assets/em4/end.jpg){: .manual-img--xl }
+![](../assets/em4/end.jpg){: .manual-img--xl }

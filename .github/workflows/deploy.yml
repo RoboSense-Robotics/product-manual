@@ -30,7 +30,7 @@ jobs:
           
       - name: Install dependencies
         run: |
-          pip install mkdocs-material
+          pip install mkdocs-material mkdocs-static-i18n
           
       - name: Setup Pages
         uses: actions/configure-pages@v5
