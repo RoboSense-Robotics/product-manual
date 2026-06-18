@@ -686,6 +686,30 @@
   background-color: #424242;
 }
 
+/* Airy 附录 D 通道测距表（双栏并排，见 Airy 表32） */
+.md-typeset .manual-table-scroll-wrap table.airy-channel-table {
+  width: 100%;
+  table-layout: fixed;
+  font-size: 0.85em;
+}
+
+.md-typeset .manual-table-scroll-wrap table.airy-channel-table th,
+.md-typeset .manual-table-scroll-wrap table.airy-channel-table td {
+  padding: 0.35rem 0.2rem;
+  text-align: center;
+  vertical-align: middle;
+  word-break: keep-all;
+}
+
+.md-typeset .manual-table-scroll-wrap table.airy-channel-table thead th {
+  background-color: #eeeeee;
+  font-weight: 700;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .manual-table-scroll-wrap table.airy-channel-table thead th {
+  background-color: #424242;
+}
+
 /* DIFOP 数据包字段表（分组 rowspan，见 EM4 表13） */
 .md-typeset .manual-table-scroll-wrap table.difop-packet-table {
   width: max-content;

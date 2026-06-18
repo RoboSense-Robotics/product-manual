@@ -1,6 +1,6 @@
 # product-manual
 
-RoboSense 公司产品手册（MkDocs Material），部署于 GitHub Pages。
+RoboSense 公司产品手册（MkDocs Material），部署于 GitHub Pages
 
 ## 本地预览
 
@@ -11,7 +11,7 @@ pip install mkdocs-material mkdocs-static-i18n
 mkdocs serve
 ```
 
-浏览器打开终端提示的地址（含 `/product-manual/` 子路径）。
+浏览器打开终端提示的地址（含 `/product-manual/` 子路径）
 
 ## 添加文档
 

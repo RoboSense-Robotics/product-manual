@@ -2089,4 +2089,4 @@ $$
   </tbody>
 </table>
 
-![](../assets/em4/end.jpg){: .manual-img--xl }
+![](../assets/images/end.jpg){: .manual-img--xl }
