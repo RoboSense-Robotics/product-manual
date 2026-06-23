@@ -960,10 +960,6 @@ DIFOP 是为了将设备序列号(S/N)、固件版本信息、上位机驱动兼
 | 无法同步 PTP/gPTP 时间 | 确认雷达固件是否与需要的同步模式匹配;在 PTP/gPTP 时间同步方式下:确认 PTP/gPTP Master 同步协议是否符合当前 PTP/gPTP 协议;确认 PTP/gPTP Master 是否正常工作。 |
 | 产品通过路由器后无数据输出 | 关闭路由器的 DHCP 功能或在路由器内部设置传感器的 IP 为正确的 IP。 |
 
-> **提示说明**：
-
-如若以上排查均未能解决问题，请联系 RoboSense。
-
 ## 6 产品维护
 
 --8<-- "snippets/product-maintenance.md"
