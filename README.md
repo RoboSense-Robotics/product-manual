@@ -2,6 +2,19 @@
 
 RoboSense 公司产品手册（MkDocs Material），部署于 GitHub Pages
 
+## 技术栈
+
+| 类别 | 技术 |
+| --- | --- |
+| 文档框架 | [MkDocs](https://www.mkdocs.org/) + [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) |
+| 多语言 | [mkdocs-static-i18n](https://github.com/ultrabug/mkdocs-static-i18n)（`docs/zh/`、`docs/en/`） |
+| Markdown 扩展 | `admonition`、`pymdownx.details`、`pymdownx.snippets`、`pymdownx.superfences`（含 Mermaid）、`pymdownx.arithmatex`、`attr_list`、`md_in_html` |
+| 公式 | MathJax 3（CDN） |
+| 样式 | `docs/stylesheets/extra.css`（表格、图片、品牌色等） |
+| 字体 | Noto Sans SC / Roboto（正文）、Roboto Mono（代码） |
+| 部署 | GitHub Actions → GitHub Pages（`site_url` 子路径 `/product-manual/`） |
+| 运行环境 | Python 3.x |
+
 ## 本地预览
 
 ```bash
