@@ -633,6 +633,35 @@
   margin-top: 0.2em;
 }
 
+/* MSOP 字段表：前三列按内容自适应（见 EMX 表6） */
+.md-typeset table.msop-data-table.msop-data-table--auto-label-cols {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto 1.25em;
+  table-layout: auto;
+}
+
+.md-typeset table.msop-data-table.msop-data-table--auto-label-cols col.msop-col-var,
+.md-typeset table.msop-data-table.msop-data-table--auto-label-cols col.msop-col-offset,
+.md-typeset table.msop-data-table.msop-data-table--auto-label-cols col.msop-col-len {
+  width: auto;
+}
+
+.md-typeset table.msop-data-table.msop-data-table--auto-label-cols th:nth-child(1),
+.md-typeset table.msop-data-table.msop-data-table--auto-label-cols th:nth-child(2),
+.md-typeset table.msop-data-table.msop-data-table--auto-label-cols th:nth-child(3),
+.md-typeset table.msop-data-table.msop-data-table--auto-label-cols td:nth-child(1),
+.md-typeset table.msop-data-table.msop-data-table--auto-label-cols td:nth-child(2),
+.md-typeset table.msop-data-table.msop-data-table--auto-label-cols td:nth-child(3) {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.md-typeset table.msop-data-table.msop-data-table--auto-label-cols td.msop-content {
+  white-space: normal;
+  min-width: 14rem;
+}
+
 /* MSOP Header 字段表（信息列浅底，见 Airy 表9） */
 .md-typeset table.msop-header-table {
   width: max-content;
