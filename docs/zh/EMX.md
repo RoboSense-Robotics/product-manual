@@ -951,14 +951,63 @@ DIFOP 是为了将设备序列号(S/N)、固件版本信息、上位机驱动兼
 
 <p class="manual-table-caption">表10 常见故障排查方法表</p>
 
-| 故障现象 | 解决方法 |
-| --- | --- |
-| 接口盒上面红/绿色指示灯不亮/闪烁 | 检查接口盒与电源端的连接线是否松动;检查线束是否破损。 |
-| 产品在启动时不断重启 | 检查输入电源连接和极性是否正常;检查输入电源的电压和电流是否满足要求(12 V 电压输入条件下,输入电流 $\geqslant 2$ A); |
-| Wireshark 可以收到数据但是RSView 不显示点云 | 关闭电脑防火墙,并且运行 RSView 通过防火墙;确认电脑的 IP 配置和产品设置的目的地址一致;确认 RSView 中 Sensor Network Configuration 设置正确;确认 RSView 安装目录或配置文件存放目录不包含任何中文字符;确认 Wireshark 中收到的数据包是 MSOP 类型的包。 |
-| 产品存在频发的数据丢失 | 确认网络中是否有大量的其它网络数据包或网路冲突;确认网络中是否存在其它网络产品以广播模式发送大量数据造成传感器数据阻塞;确认电脑的性能和接口性能是否满足要求;移除其它所有网络产品,直连电脑确认是否存在丢包现象。 |
-| 无法同步 PTP/gPTP 时间 | 确认雷达固件是否与需要的同步模式匹配;在 PTP/gPTP 时间同步方式下:确认 PTP/gPTP Master 同步协议是否符合当前 PTP/gPTP 协议;确认 PTP/gPTP Master 是否正常工作。 |
-| 产品通过路由器后无数据输出 | 关闭路由器的 DHCP 功能或在路由器内部设置传感器的 IP 为正确的 IP。 |
+<table class="packet-def-table fault-troubleshoot-table">
+  <colgroup>
+    <col class="fault-col-phenomenon" />
+    <col class="fault-col-solution" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>故障现象</th>
+      <th>解决方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>接口盒上面红/绿色指示灯不亮/闪烁</td>
+      <td>检查接口盒与电源端的连接线是否松动；<br>检查线束是否破损。</td>
+    </tr>
+    <tr>
+      <td>产品在启动时不断重启</td>
+      <td>
+        检查输入电源连接和极性是否正常；<br>
+        检查输入电源的电压和电流是否满足要求（12 V 电压输入条件下，输入电流≥2 A）；
+      </td>
+    </tr>
+    <tr>
+      <td>Wireshark 可以收到数据但是 RSView 不显示点云</td>
+      <td>
+        关闭电脑防火墙，并且运行 RSView 通过防火墙；<br>
+        确认电脑的 IP 配置和产品设置的目的地址一致；<br>
+        确认 RSView 中 Sensor Network Configuration 设置正确；<br>
+        确认 RSView 安装目录或配置文件存放目录不包含任何中文字符；<br>
+        确认 Wireshark 中收到的数据包是 MSOP 类型的包。
+      </td>
+    </tr>
+    <tr>
+      <td>产品存在频发的数据丢失</td>
+      <td>
+        确认网络中是否有大量的其它网络数据包或网络冲突；<br>
+        确认网络中是否存在其它网络产品以广播模式发送大量数据造成传感器数据阻塞；<br>
+        确认电脑的性能和接口性能是否满足要求；<br>
+        移除其它所有网络产品，直连电脑确认是否存在丢包现象。
+      </td>
+    </tr>
+    <tr>
+      <td>无法同步 PTP/gPTP 时间</td>
+      <td>
+        确认雷达固件是否与需要的同步模式匹配；<br>
+        在 PTP/gPTP 时间同步方式下：<br>
+        确认 PTP/gPTP Master 同步协议是否符合当前 PTP/gPTP 协议；<br>
+        确认 PTP/gPTP Master 是否正常工作。
+      </td>
+    </tr>
+    <tr>
+      <td>产品通过路由器后无数据输出</td>
+      <td>关闭路由器的 DHCP 功能或在路由器内部设置传感器的 IP 为正确的 IP。</td>
+    </tr>
+  </tbody>
+</table>
 
 ## 6 产品维护
 
@@ -968,22 +1017,61 @@ DIFOP 是为了将设备序列号(S/N)、固件版本信息、上位机驱动兼
 
 --8<-- "snippets/after-sales.md"
 
-附录A TE 接头 Pin 脚定义
-
+## 附录A TE 接头 Pin 脚定义
 
 ![](../assets/emx/A.jpg){: .manual-img--xl }
 
-
-| 接插件引脚定义 |  |  |
-| --- | --- | --- |
-| pin号 | 引脚定义 | 连接器型号 |
-| 1 | GND | TE 2387351-1 |
-| 2 | Wakeup(KL15) | TE 2387351-1 |
-| 3 | / | TE 2387351-1 |
-| 4 | Battery+ | TE 2387351-1 |
-| 5 | / | TE 2387351-1 |
-| 6 | / | TE 2387351-1 |
-| D1 | TRX_N(1000Base-T1) | TE 2387351-1 |
-| D2 | TRX_P(1000Base-T1) | TE 2387351-1 |
+<table class="packet-def-table connector-pin-table">
+  <colgroup>
+    <col class="connector-col-pin" />
+    <col class="connector-col-def" />
+    <col class="connector-col-model" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th colspan="3">接插件引脚定义</th>
+    </tr>
+    <tr>
+      <th>pin号</th>
+      <th>引脚定义</th>
+      <th>连接器型号</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>GND</td>
+      <td rowspan="8">TE 2387351-1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Wakeup(KL15)</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>/</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Battery+</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>/</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>/</td>
+    </tr>
+    <tr>
+      <td>D1</td>
+      <td>TRX_N(1000Base-T1)</td>
+    </tr>
+    <tr>
+      <td>D2</td>
+      <td>TRX_P(1000Base-T1)</td>
+    </tr>
+  </tbody>
+</table>
 
 ![](../assets/images/end.jpg){: .manual-img--xl } 
