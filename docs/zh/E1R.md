@@ -151,11 +151,9 @@ gPTP（general Precise Time Protocol，IEEE802.1AS 协议）是 PTP 在时效性
 ![](../assets/e1r/2.4.1.jpg){: .manual-img--xl }
 <p align="center" style="font-size: 0.9em; color: gray;">图 4 gPTP 时间同步拓扑</p>
 
-1) gPTP Master 授时主机（即插即用，无需额外配置）；
-
-2) 以太网交换机;
-
-3) 支持 gPTP 协议的待授时设备。
+1. gPTP Master 授时主机（即插即用，无需额外配置）；
+2. 以太网交换机;
+3. 支持 gPTP 协议的待授时设备。
 
 !!! tip "提示"
     1. Master 授时设备属于第三方设备，RoboSense 出货时不包含此配件，需用户自行采购；
@@ -166,112 +164,118 @@ gPTP（general Precise Time Protocol，IEEE802.1AS 协议）是 PTP 在时效性
 
 将 E1R 电源线和网线与接口盒相连，网线对端再与上位机相连。上位机操作系统（OS）必须为 Linux 系统，以下以 Ubuntu 为例。
 
-1) 使用命令$ifconfig 查看网卡名。如图 5 所示，网卡名为 enp2s0。
+1. 使用命令 `ifconfig` 查看网卡名。如图 5 所示，网卡名为 `enp2s0`。
 
-![](../assets/e1r/2.4.2-1.jpg){: .manual-img--xl }
-<p align="center" style="font-size: 0.9em; color: gray;">图 5 查找网卡名示意图</p>
+    ![](../assets/e1r/2.4.2-1.jpg){: .manual-img--xl }
+    <p align="center" style="font-size: 0.9em; color: gray;">图 5 查找网卡名示意图</p>
 
-2) 使用命令$ethtool -T enp2s0（上一步查询到的网卡名），可以查看此网卡是否支持 PTP 硬件。对于 gPTP 同步，需要硬件支持，PTP Hardware Clock 选项要求不是 none 值。
+2. 使用命令 `ethtool -T enp2s0`（上一步查询到的网卡名），可以查看此网卡是否支持 PTP 硬件。对于 gPTP 同步，需要硬件支持，`PTP Hardware Clock` 选项要求不是 `none` 值。
 
-![](../assets/e1r/2.4.2-2.jpg){: .manual-img--xl }
-<p align="center" style="font-size: 0.9em; color: gray;">图 6 检查 PTP 硬件支持情况示意图</p>
+    ![](../assets/e1r/2.4.2-2.jpg){: .manual-img--xl }
+    <p align="center" style="font-size: 0.9em; color: gray;">图 6 检查 PTP 硬件支持情况示意图</p>
 
-3) 下载并安装 linuxptp 工具。
+3. 下载并安装 linuxptp 工具。
 
-```
-$sudo git clone git://git.code.sf.net/p/linuxptp/code linuxptp
-$cd linuxptp
-$sudo make
-$sudo make install 
-$reboot
-```
+    ```bash
+    sudo git clone git://git.code.sf.net/p/linuxptp/code linuxptp
+    cd linuxptp
+    sudo make
+    sudo make install
+    reboot
+    ```
 
-4) Ptp41 命令的使用。
+4. Ptp41 命令的使用。
 
-Ptp41 命令选项介绍如下:
+    Ptp4l 命令选项介绍如下：
 
-a) 延迟机制选项
+    a. 延迟机制选项
 
--A 自动模式，自动选择 E2E 延迟机制，当收到对等延迟请求时切换到 P2P。
+    - `-A` 自动模式，自动选择 E2E 延迟机制，当收到对等延迟请求时切换到 P2P。
 
--E E2E 模式，请求应答延迟机制（默认）
+    - `-E` E2E 模式，请求应答延迟机制（默认）
 
--P P2P 模式，端延迟机制
+    - `-P` P2P 模式，端延迟机制
 
-b) 网络传输选项
+    b. 网络传输选项
 
--2 IEEE 802.3 
+    - `-2` IEEE 802.3
 
--4 UDP IPV4（默认）
+    - `-4` UDP IPV4（默认）
 
--6 UDP IPV6 
+    - `-6` UDP IPV6
 
-c) 时间戳选项
+    c. 时间戳选项
 
--H 硬件时间戳（默认）
+    - `-H` 硬件时间戳（默认）
 
--S 软件模拟时间戳
+    - `-S` 软件模拟时间戳
 
--L 老的硬件时间戳，LEGACY HW 需要配合 PHC 设备使用。
+    - `-L` 老的硬件时间戳，LEGACY HW 需要配合 PHC 设备使用。
 
-d) 其他选项
+    d. 其他选项
 
--f [file] 从指定文件 file 中读取配置。默认情况下不读取任何配置文件。
+    - `-f [file]` 从指定文件 file 中读取配置。默认情况下不读取任何配置文件。
 
--i [dev] 选择 PTP 接口设备，例如 eth0（可多次指定）必须至少使用此选项或配置文件指定一个端口。
+    - `-i [dev]` 选择 PTP 接口设备，例如 eth0（可多次指定）必须至少使用此选项或配置文件指定一个端口。
 
--p [dev]此选项用于在旧 Linux 内核上指定要使用的 PHC 设备(例如 /dev/ptp0 时钟设备)，默认为 auto，忽略软件/ LEGACY HW 时间戳(不推荐使用此选项)
+    - `-p [dev]` 此选项用于在旧 Linux 内核上指定要使用的 PHC 设备（例如 `/dev/ptp0` 时钟设备），默认为 auto，忽略软件 / LEGACY HW 时间戳（不推荐使用此选项）
 
--s slaveOnly mode，从时钟模式（覆盖配置文件）
+    - `-s` slaveOnly mode，从时钟模式（覆盖配置文件）
 
--t 透明时钟模式
+    - `-t` 透明时钟模式
 
--1 [num] 将日志记录级别设置为'num'，默认是6
+    - `-l [num]` 将日志记录级别设置为 `num`，默认是 6
 
--m 将消息打印到 stdout
+    - `-m` 将消息打印到 stdout
 
--q 不打印消息到 syslog
+    - `-q` 不打印消息到 syslog
 
--v 打印软件版本并退出
+    - `-v` 打印软件版本并退出
 
--h 帮助命令
+    - `-h` 帮助命令
 
 此外，简单同步 E1R 使用命令如下:
 
-1) PTP E2E（L2 层）命令:
+1. PTP E2E（L2 层）命令:
 
-$sudo ptp4l -E -S -2 -m -i enp2s0（网卡名）
+    ```bash
+    sudo ptp4l -E -S -2 -m -i enp2s0
+    ```
 
-如设备硬件支持 PTP Hardware Clock 不是 none 值，可以使用-H 替代-S 2) gPTP 命令：
+    如设备硬件支持 `PTP Hardware Clock` 不是 `none` 值，可以使用 `-H` 替代 `-S`
 
-$sudo ptp4l -i enp4s0 -m -H -2 -f gptp-master.cfg 
+2. gPTP 命令：
 
-设备要求硬件支持 PTP Hardware Clock 不是 none 值。其中，gptp-master.cfg 为 gPTP 主时钟配置文件。
+    ```bash
+    sudo ptp4l -i enp4s0 -m -H -2 -f gptp-master.cfg
+    ```
 
-在主机上新建 gptp-master.cfg 文件，在此文件中复制以下内容后，保存文件：
+    设备要求硬件支持 `PTP Hardware Clock` 不是 `none` 值。其中，`gptp-master.cfg` 为 gPTP 主时钟配置文件。
 
-```
-# 802.1AS example configuration containing those attributes which
-# differ from the defaults. See the file, default.cfg, for the
-# complete list of available options.
-[global]
-domainNumber 0
-logSyncInterval -3
-syncReceiptTimeout 3
-neighborPropDelayThresh 800
-path_trace_enabled 1
-follow_up_info 1
-transportSpecific 0x1
-ptp_dst_mac 01:80:C2:00:00:0E
-#p2p_dst_mac 01:1B:19:00:00:00
-network_transport L2
-delay_mechanism P2P
-masterOnly 1
-BMCA noop
-asCapable true
-inhibit_announce 1
-inhibit_delay_req 1 
-```
+    在主机上新建 `gptp-master.cfg` 文件，在此文件中复制以下内容后，保存文件：
+
+    ```
+    # 802.1AS example configuration containing those attributes which
+    # differ from the defaults. See the file, default.cfg, for the
+    # complete list of available options.
+    [global]
+    domainNumber             0
+    logSyncInterval          -3
+    syncReceiptTimeout       3
+    neighborPropDelayThresh  800
+    path_trace_enabled       1
+    follow_up_info           1
+    transportSpecific        0x1
+    ptp_dst_mac              01:80:C2:00:00:0E
+    #p2p_dst_mac             01:1B:19:00:00:00
+    network_transport        L2
+    delay_mechanism          P2P
+    masterOnly               1
+    BMCA                     noop
+    asCapable                true
+    inhibit_announce         1
+    inhibit_delay_req        1
+    ```
 
 !!! warning "注意"
     无硬件支持设备可用 `-S` 替代 `-H` 进行 gPTP 同步模拟，但同步精度无法保证。
