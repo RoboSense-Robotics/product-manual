@@ -717,6 +717,23 @@
   margin: 0 auto 1.25em;
 }
 
+.md-typeset table.channel-data-table.channel-data-table--two-col {
+  width: 100%;
+  max-width: 42rem;
+}
+
+.md-typeset table.channel-data-table.channel-data-table--two-col col.channel-data-col-distance {
+  width: 72%;
+}
+
+.md-typeset table.channel-data-table.channel-data-table--two-col col.channel-data-col-reflectivity {
+  width: 28%;
+}
+
+.md-typeset table.channel-data-table.channel-data-table--two-col tbody tr:last-child td:first-child {
+  text-align: left;
+}
+
 /* 宽表横向滚动（不压住右侧目录；见表12 等） */
 .md-typeset .manual-table-scroll-wrap {
   display: block;
@@ -860,6 +877,28 @@
 .md-typeset .manual-table-scroll-wrap table.difop-packet-table.airy-difop-layout-table td:nth-child(1),
 .md-typeset .manual-table-scroll-wrap table.difop-packet-table.airy-difop-layout-table td:nth-child(2),
 .md-typeset .manual-table-scroll-wrap table.difop-packet-table.airy-difop-layout-table td:nth-child(3) {
+  width: 1%;
+  white-space: nowrap;
+}
+
+/* Airy Lite 表9：信息 / Offset / 长度按内容收窄，说明列占剩余宽度 */
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table {
+  table-layout: auto;
+  width: 100%;
+}
+
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table col.difop-col-var,
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table col.difop-col-offset,
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table col.difop-col-len {
+  width: auto;
+}
+
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table th:nth-child(1),
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table th:nth-child(2),
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table th:nth-child(3),
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table td:nth-child(1),
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table td:nth-child(2),
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table td:nth-child(3) {
   width: 1%;
   white-space: nowrap;
 }
