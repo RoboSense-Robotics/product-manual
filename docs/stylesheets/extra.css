@@ -366,6 +366,61 @@
 }
 
 /* ============================================================
+   手机版导航抽屉适配（窗口/预览宽度 < 1220px 时）
+   抽屉是白底，但侧栏文字是为「桌面深色侧栏」设的白色 → 白底白字看不见；
+   且 Material 手机版默认逐层下钻，进到某产品后只剩该平台、回不到首页。
+   这里在手机版断点里：① 文字改深色/红色；② 嵌套导航平铺展开。
+   只在 <1220px 生效，不影响桌面深色侧栏。
+   ============================================================ */
+@media screen and (max-width: 76.1875em) {
+  /* 一级链接（如「首页」）与产品条目：深色 */
+  .md-sidebar--primary .md-nav__link {
+    color: var(--rs-ink);
+  }
+  /* 平台分组标题（EM平台/E平台/R平台）：深色加粗 */
+  .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav__link {
+    color: var(--rs-ink);
+    font-weight: 600;
+  }
+  /* 展开/折叠箭头：深色 */
+  .md-sidebar--primary .md-nav__icon,
+  .md-sidebar--primary .md-nav__button {
+    color: var(--rs-ink);
+  }
+  /* 当前页：白底上用红字 + 红色左条 */
+  .md-sidebar--primary .md-nav__link--active {
+    color: var(--rs-red);
+    background-color: transparent;
+    box-shadow: inset 3px 0 0 var(--rs-red);
+  }
+  /* 悬停：浅灰底 + 红字 */
+  .md-sidebar--primary .md-nav__link:hover {
+    color: var(--rs-red);
+    background-color: rgba(0, 0, 0, .04);
+  }
+
+  /* ---- 让嵌套导航「平铺展开」，而不是逐层下钻 ----
+     这样不论在哪个产品页，侧栏都同时列出全部平台 + 全部产品，
+     并且左上角 logo / 首页 入口始终在最上方，随时能回首页。 */
+  .md-sidebar--primary .md-nav--primary .md-nav {
+    position: static !important;
+    transform: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    display: block !important;
+  }
+  /* 平铺后下钻面板自带的返回头多余，隐藏 */
+  .md-sidebar--primary .md-nav--primary .md-nav > .md-nav__title {
+    display: none !important;
+  }
+  /* 分组标题旁的展开箭头在平铺模式下没意义，隐藏 */
+  .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav__link > .md-nav__icon {
+    display: none;
+  }
+}
+
+/* ============================================================
    正文内容细节优化
    ============================================================ */
 
@@ -717,23 +772,6 @@
   margin: 0 auto 1.25em;
 }
 
-.md-typeset table.channel-data-table.channel-data-table--two-col {
-  width: 100%;
-  max-width: 42rem;
-}
-
-.md-typeset table.channel-data-table.channel-data-table--two-col col.channel-data-col-distance {
-  width: 72%;
-}
-
-.md-typeset table.channel-data-table.channel-data-table--two-col col.channel-data-col-reflectivity {
-  width: 28%;
-}
-
-.md-typeset table.channel-data-table.channel-data-table--two-col tbody tr:last-child td:first-child {
-  text-align: left;
-}
-
 /* 宽表横向滚动（不压住右侧目录；见表12 等） */
 .md-typeset .manual-table-scroll-wrap {
   display: block;
@@ -877,28 +915,6 @@
 .md-typeset .manual-table-scroll-wrap table.difop-packet-table.airy-difop-layout-table td:nth-child(1),
 .md-typeset .manual-table-scroll-wrap table.difop-packet-table.airy-difop-layout-table td:nth-child(2),
 .md-typeset .manual-table-scroll-wrap table.difop-packet-table.airy-difop-layout-table td:nth-child(3) {
-  width: 1%;
-  white-space: nowrap;
-}
-
-/* Airy Lite 表9：信息 / Offset / 长度按内容收窄，说明列占剩余宽度 */
-.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table {
-  table-layout: auto;
-  width: 100%;
-}
-
-.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table col.difop-col-var,
-.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table col.difop-col-offset,
-.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table col.difop-col-len {
-  width: auto;
-}
-
-.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table th:nth-child(1),
-.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table th:nth-child(2),
-.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table th:nth-child(3),
-.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table td:nth-child(1),
-.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table td:nth-child(2),
-.md-typeset .manual-table-scroll-wrap table.difop-packet-table.airylite-difop-layout-table td:nth-child(3) {
   width: 1%;
   white-space: nowrap;
 }
