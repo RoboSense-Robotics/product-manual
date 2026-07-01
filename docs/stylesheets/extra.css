@@ -726,13 +726,17 @@
 }
 
 .md-typeset table.msop-header-table th:nth-child(1),
-.md-typeset table.msop-header-table th:nth-child(2),
-.md-typeset table.msop-header-table th:nth-child(3),
-.md-typeset table.msop-header-table td:nth-child(1),
-.md-typeset table.msop-header-table td:nth-child(2),
-.md-typeset table.msop-header-table td:nth-child(3) {
-  width: 1%;
+.md-typeset table.msop-header-table td:nth-child(1) {
   white-space: nowrap;
+}
+
+.md-typeset table.msop-header-table col.msop-col-offset,
+.md-typeset table.msop-header-table col.msop-col-len {
+  width: auto;
+}
+
+.md-typeset table.msop-header-table col.msop-col-total {
+  width: 1%;
 }
 
 .md-typeset table.msop-header-table td:first-child {
@@ -745,6 +749,56 @@
 
 .md-typeset table.msop-header-table td:nth-child(4) {
   text-align: left;
+}
+
+.md-typeset table.msop-header-table th:nth-child(5),
+.md-typeset table.msop-header-table td[rowspan] {
+  width: 1%;
+  white-space: nowrap;
+  padding-left: 0.35rem;
+  padding-right: 0.35rem;
+}
+
+/* Data Block 单包字段表（见 Fairy 表11）；信息列用 class 标记，避免 rowspan 时 td:first-child 错位着色 */
+.md-typeset table.data-block-def-table {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto 1.25em;
+  table-layout: auto;
+}
+
+.md-typeset table.data-block-def-table th:nth-child(1),
+.md-typeset table.data-block-def-table td.field-col {
+  white-space: nowrap;
+}
+
+.md-typeset table.data-block-def-table col.msop-col-offset,
+.md-typeset table.data-block-def-table col.msop-col-len {
+  width: auto;
+}
+
+.md-typeset table.data-block-def-table col.msop-col-total {
+  width: 1%;
+}
+
+.md-typeset table.data-block-def-table td.field-col {
+  background-color: #fffde7;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table.data-block-def-table td.field-col {
+  background-color: #3d3822;
+}
+
+.md-typeset table.data-block-def-table td:nth-child(4) {
+  text-align: left;
+}
+
+.md-typeset table.data-block-def-table th:nth-child(5),
+.md-typeset table.data-block-def-table td[rowspan] {
+  width: 1%;
+  white-space: nowrap;
+  padding-left: 0.35rem;
+  padding-right: 0.35rem;
 }
 
 /* Data Block 结构表（双行表头，见 Airy 表10） */
@@ -770,6 +824,20 @@
   width: max-content;
   max-width: 100%;
   margin: 0 auto 1.25em;
+}
+
+.md-typeset table.channel-data-table--two-col {
+  width: 100%;
+  max-width: 28rem;
+  table-layout: fixed;
+}
+
+.md-typeset table.channel-data-table--two-col col.channel-data-col-distance {
+  width: 66.67%;
+}
+
+.md-typeset table.channel-data-table--two-col col.channel-data-col-reflectivity {
+  width: 33.33%;
 }
 
 /* 宽表横向滚动（不压住右侧目录；见表12 等） */
@@ -919,6 +987,67 @@
   white-space: nowrap;
 }
 
+/* Fairy 表13 等 4 列 DIFOP 表：信息列自适应换行，Offset/长度收窄，说明列占剩余宽度 */
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.fairy-difop-layout-table {
+  table-layout: auto;
+  width: 100%;
+}
+
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.fairy-difop-layout-table col.difop-col-var,
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.fairy-difop-layout-table col.difop-col-offset,
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.fairy-difop-layout-table col.difop-col-len,
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.fairy-difop-layout-table col.difop-col-content {
+  width: auto;
+}
+
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.fairy-difop-layout-table th:nth-child(1),
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.fairy-difop-layout-table td:nth-child(1) {
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  width: auto;
+  max-width: 11em;
+  vertical-align: middle;
+}
+
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.fairy-difop-layout-table th:nth-child(2),
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.fairy-difop-layout-table th:nth-child(3),
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.fairy-difop-layout-table td:nth-child(2),
+.md-typeset .manual-table-scroll-wrap table.difop-packet-table.fairy-difop-layout-table td:nth-child(3) {
+  width: 1%;
+  white-space: nowrap;
+}
+
+/* Fairy 表14 等 5 列 IMU 表：信息列自适应换行，Offset/长度收窄，说明/备注列左对齐换行 */
+.md-typeset .manual-table-scroll-wrap table.packet-def-table.fairy-imu-layout-table {
+  table-layout: auto;
+  width: 100%;
+}
+
+.md-typeset .manual-table-scroll-wrap table.packet-def-table.fairy-imu-layout-table th:nth-child(1),
+.md-typeset .manual-table-scroll-wrap table.packet-def-table.fairy-imu-layout-table td:nth-child(1) {
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  width: auto;
+  max-width: 11em;
+  vertical-align: middle;
+}
+
+.md-typeset .manual-table-scroll-wrap table.packet-def-table.fairy-imu-layout-table th:nth-child(2),
+.md-typeset .manual-table-scroll-wrap table.packet-def-table.fairy-imu-layout-table th:nth-child(3),
+.md-typeset .manual-table-scroll-wrap table.packet-def-table.fairy-imu-layout-table td:nth-child(2),
+.md-typeset .manual-table-scroll-wrap table.packet-def-table.fairy-imu-layout-table td:nth-child(3) {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.md-typeset .manual-table-scroll-wrap table.packet-def-table.fairy-imu-layout-table td.difop-content {
+  text-align: left;
+  white-space: normal;
+  line-height: 1.45;
+}
+
 /* 接插件引脚定义表（见 EM4 附录 A） */
 .md-typeset table.connector-pin-table {
   width: max-content;
@@ -1037,6 +1166,27 @@
 
 [data-md-color-scheme="slate"] .md-typeset table.manual-spec-grid-table tr.section-head th {
   background-color: #424242;
+}
+
+/* 接线说明表（图文两列，如 Fairy 表7） */
+.md-typeset table.manual-spec-grid-table.wiring-instruction-table {
+  table-layout: fixed;
+}
+
+.md-typeset table.manual-spec-grid-table.wiring-instruction-table tr.section-head th:first-child,
+.md-typeset table.manual-spec-grid-table.wiring-instruction-table td.wiring-desc {
+  width: 50%;
+  text-align: left;
+  font-weight: 400;
+  vertical-align: middle;
+  line-height: 1.55;
+}
+
+.md-typeset table.manual-spec-grid-table.wiring-instruction-table tr.section-head th:last-child,
+.md-typeset table.manual-spec-grid-table.wiring-instruction-table td.wiring-diagram {
+  width: 50%;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .md-typeset .spec-footnotes {
